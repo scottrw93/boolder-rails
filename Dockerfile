@@ -15,5 +15,7 @@ WORKDIR /boolder/app
 
 RUN bundle install
 
+RUN rake assets:precompile
+
 EXPOSE 3000
 CMD ["/boolder/bin/rails", "server", "-b", "0.0.0.0"]
