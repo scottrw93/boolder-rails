@@ -71,4 +71,13 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "boolder-rails-680022408237.us-central1.run.app"
 
+  # Compress CSS using a preprocessor.
+  config.assets.css_compressor = nil
+
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
+
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  config.asset_host = 'assets.boolder.com'
+
 end
