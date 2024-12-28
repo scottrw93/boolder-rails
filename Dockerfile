@@ -17,5 +17,5 @@ RUN bundle install
 
 RUN rake assets:precompile
 
-EXPOSE 3000
-CMD ["/boolder/bin/rails", "server", "-b", "0.0.0.0"]
+EXPOSE 8080
+CMD ["/boolder/bin/rails", "server", "-b", "0.0.0.0", "-p", "8080" ]
