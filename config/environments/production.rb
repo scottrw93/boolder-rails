@@ -104,5 +104,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.hosts << "boolder-rails-680022408237.us-central1.run.app"
 end
