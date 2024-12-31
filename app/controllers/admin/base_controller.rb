@@ -16,7 +16,7 @@ class Admin::BaseController < ApplicationController
 
   def accounts
     {
-      "scott"  => Rails.application.credentials.dig(:admin, :scott),
+      "scott"  => ENV["ADMIN_PASSWORD"],
     }
   end
 
