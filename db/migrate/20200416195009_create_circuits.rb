@@ -1,4 +1,4 @@
-class CreateSectors < ActiveRecord::Migration[6.0]
+class CreateCircuits < ActiveRecord::Migration[6.0]
   def change
     create_table :sectors do |t|
       t.string :color

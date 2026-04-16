@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_DB: dump-prod
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: postgis://postgres:postgres@db:5432/dump-prod
+      RAILS_ENV: development
+      SECRET_KEY_BASE: 7938fb8be16ba7599ce13754ef0e4c913207d6fb8d64be51800dcbcc28c5a1e906d1e6189513306fd4db16c4773b153feaeab40e0a334ad88da9640e3f1227ea
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

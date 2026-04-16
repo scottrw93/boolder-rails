@@ -11,11 +11,11 @@ RUN     apt update && \
         apt install -y libvips && \
         apt install -y libvips-tools
 
-WORKDIR /boolder/app
+WORKDIR /boolder
 
 RUN bundle install
 
 RUN rake assets:precompile
 
 EXPOSE 8080
-CMD ["/boolder/bin/rails", "server", "-b", "0.0.0.0", "-p", "8080" ]
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
