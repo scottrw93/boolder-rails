@@ -67,6 +67,52 @@ We use it to edit GeoJSON files.
 - Restart Josm
 - In the menu bar (on the left), click on `Fast Drawing mode` and then type `Q` to enter the options dialog. Click on `Draw closed polygons only`, choose `3` for `Starting Epsilon` and `Simplify with initial epsilon` for `Enter key mode`
 
+## Running with Docker
+
+```bash
+docker compose up --build
+```
+
+The app will be available at `http://localhost:8080`.
+
+### Set up the database (first time)
+
+```bash
+docker compose exec web bin/rails db:create db:migrate
+```
+
+### Admin
+
+Go to `http://localhost:8080/en/admin` and log in with username `scott` and the value of `ADMIN_PASSWORD` from your docker-compose.yml.
+
+## Common actions
+
+### Open a Rails console
+
+```bash
+docker compose exec web bin/rails console
+```
+
+### Create an area
+
+Areas must be created via the Rails console (there is no UI for this):
+
+```ruby
+Area.create!(name: "My Area", slug: "my-area", published: false)
+```
+
+Once created, edit it at `/en/admin/areas/my-area/edit`.
+
+### Create a problem
+
+Problems are created via the admin UI. Go to `/en/admin/problems/new`.
+
+### Run migrations
+
+```bash
+docker compose exec web bin/rails db:migrate
+```
+
 ## Contribute
 
 Want to help us improve the app for thousands of climbers? Great!
